@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+CHEF_USER=$1
+
+if [ -z "$CHEF_USER" ]; then
+    echo "ERROR: Must pass username as first and only argument"
+    exit 1
+fi
+
 # remove cdrom src from apt sources
 sed -i '/deb cdrom/d' /etc/apt/sources.list
 
