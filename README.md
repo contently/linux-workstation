@@ -19,5 +19,5 @@ Password: -enter superuser password-
 
 Execute script as superuser:
 ```bash
-# ./Downloads/setup-linux-workstation.sh
+$ ./Downloads/setup-linux-workstation.sh
 ```

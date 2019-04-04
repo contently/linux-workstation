@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO This script needs to be made available for download as an asset file? Somehow needs to be public.
-
-# TODO check if required username given, used later, and verify user exists - can't be superuser
-
 # TODO check if superuser
 
 # remove cdrom src from apt sources
