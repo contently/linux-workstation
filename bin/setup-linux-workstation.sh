@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO check if superuser
-
 # remove cdrom src from apt sources
 sed -i '/deb cdrom/d' /etc/apt/sources.list
 
@@ -9,7 +7,13 @@ sed -i '/deb cdrom/d' /etc/apt/sources.list
 apt-get update && apt-get install curl -y
 
 # download and install chefdk
-wget -P Downloads/ https://packages.chef.io/files/stable/chefdk/3.8.14/debian/9/chefdk_3.8.14-1_amd64.deb
+chef_dk_file="Downloads/chefdk_3.8.14-1_amd64.deb"
+
+if [ -e "$chef_dk_file" ]; then
+    wget -O $chef_dk_file https://packages.chef.io/files/stable/chefdk/3.8.14/debian/9/chefdk_3.8.14-1_amd64.deb
+fi
+
+dpkg -i $chef_dk_file
 
 # download, unzip, and move release of linux-workstation repo
 curl -s https://api.github.com/repos/contently/linux-workstation/releases/latest \
@@ -18,6 +22,7 @@ curl -s https://api.github.com/repos/contently/linux-workstation/releases/latest
     | wget -O Downloads/linux-workstation-latest.tar.gz -qi -
 
 mkdir -p Projects
+rm -rf Downloads/contently-linux-workstation-*
 tar -xf Downloads/linux-workstation-latest.tar.gz -C Downloads
 mv Downloads/contently-linux-workstation-* Projects/linux-workstation
 
