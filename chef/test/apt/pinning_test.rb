@@ -1,0 +1,1 @@
+# TODO verify that apt pinning prefs are correctly set

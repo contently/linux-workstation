@@ -24,3 +24,5 @@ if `uname -r`[0].to_i < 4
   raise StandardError,
         'Please upgrade to a somewhat modern kernel, such as 4.x'
 end
+
+include_recipe 'linux-workstation::apt'

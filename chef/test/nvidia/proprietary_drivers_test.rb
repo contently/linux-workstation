@@ -1,0 +1,1 @@
+# TODO verify that nvidia proprietary drivers are installed, novoue is blacklisted, etc

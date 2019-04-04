@@ -1,0 +1,1 @@
+# TODO verify that X starts and xwd can run without error

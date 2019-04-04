@@ -1,13 +1,12 @@
 /.idea
 /tmp/*
 !/tmp/.keep
-
+bin/chef-up.sh
 chef/.bundle/
 chef/.kitchen/
 !chef/.kitchen/.keep
 chef/chef_guid
-
+chef/client.rb
 chef/local-mode-cache/
 chef/vendor/
-
 chef/Berksfile.lock

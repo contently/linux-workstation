@@ -17,6 +17,11 @@ $ su
 Password: -enter superuser password-
 ```
 
+Make script executable:
+```bash
+$ chmod +x ./Downloads/setup-linux-workstation.sh
+```
+
 Execute script as superuser:
 ```bash
 $ ./Downloads/setup-linux-workstation.sh
