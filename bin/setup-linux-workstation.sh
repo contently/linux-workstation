@@ -41,8 +41,8 @@ mv Downloads/contently-linux-workstation-* Projects/linux-workstation
 # Create client and chef-up scripts from templates
 cp -f Projects/linux-workstation/chef/client.template.rb Projects/linux-workstation/chef/client.rb
 cp -f Projects/linux-workstation/bin/chef-up.template.sh Projects/linux-workstation/bin/chef-up.sh
-sed "s/{{USER}}/$USER/g" -i Projects/linux-workstation/chef/client.rb
-sed "s/{{USER}}/$USER/g" -i Projects/linux-workstation/bin/chef-up.sh
+sed "s/{{USER}}/$CHEF_USER/g" -i Projects/linux-workstation/chef/client.rb
+sed "s/{{USER}}/$CHEF_USER/g" -i Projects/linux-workstation/bin/chef-up.sh
 chmod +x Projects/linux-workstation/bin/chef-up.sh
 
 # TODO set 'user' in attrs to given username
