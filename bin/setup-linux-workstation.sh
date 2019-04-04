@@ -9,7 +9,7 @@ apt-get update && apt-get install curl -y
 # download and install chefdk
 chef_dk_file="Downloads/chefdk_3.8.14-1_amd64.deb"
 
-if [ -e "$chef_dk_file" ]; then
+if [ ! -f "$chef_dk_file" ]; then
     wget -O $chef_dk_file https://packages.chef.io/files/stable/chefdk/3.8.14/debian/9/chefdk_3.8.14-1_amd64.deb
 fi
 
@@ -24,6 +24,11 @@ curl -s https://api.github.com/repos/contently/linux-workstation/releases/latest
 mkdir -p Projects
 rm -rf Downloads/contently-linux-workstation-*
 tar -xf Downloads/linux-workstation-latest.tar.gz -C Downloads
+
+if [ -d "Projects/linux-workstation" ]; then
+  rm -rf Projects/linux-workstation
+fi
+
 mv Downloads/contently-linux-workstation-* Projects/linux-workstation
 
 # Create client and chef-up scripts from templates
