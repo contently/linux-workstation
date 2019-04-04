@@ -9,6 +9,9 @@
 # remove cdrom src from apt sources
 sed -i '/deb cdrom/d' /etc/apt/sources.list
 
+# install curl
+apt-get update && apt-get install curl -y
+
 # download and install chefdk
 wget -P Downloads/ https://packages.chef.io/files/stable/chefdk/3.8.14/debian/9/chefdk_3.8.14-1_amd64.deb
 
