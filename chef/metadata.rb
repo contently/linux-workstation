@@ -6,10 +6,13 @@ license           'Copyright 2018 Contently'
 description       'Provisions linux workstation'
 version           '0.1.0'
 # TODO verify other versions of chef this will work with at some point
-chef_version      '14.10.9' # chef-client version, not chefdk version
+# chef_version      '=> 14' # chef-client version, not chefdk version
 source_url        'https://github.com/contently/linux-workstation'
 issues_url        'https://github.com/contently/linux-workstation/issues'
 supports          'debian', '= 9'
 
-# depends 'apt'
-# depends 'user'
+depends 'apt'
+depends 'debian', '~> 1.8'
+depends 'user'
+depends 'docker'
+depends 'asdf'

@@ -17,7 +17,8 @@ suites:
       - recipe[linux-workstation::default]
     verifier:
       inspec_tests:
-        - test/default
+        - test/apt
+        - test/nvidia
     attributes:
       desktop:
         user:
