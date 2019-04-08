@@ -48,6 +48,7 @@ include_recipe 'linux-workstation::git'
 include_recipe 'linux-workstation::jq'
 include_recipe 'linux-workstation::unzip'
 include_recipe 'linux-workstation::dtrx'
+include_recipe 'linux-workstation::xbacklight'
 
 # Configs
 #   individual config files, etc - should be handled by vault + individual dot files
