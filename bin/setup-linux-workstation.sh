@@ -8,10 +8,10 @@ if [ -z "$CHEF_USER" ]; then
 fi
 
 # remove cdrom src from apt sources
-sed -i '/deb cdrom/d' /etc/apt/sources.list
+su -c "sed -i '/deb cdrom/d' /etc/apt/sources.list"
 
 # install curl
-apt-get update && apt-get install curl -y
+su -c "apt-get update && apt-get install curl -y"
 
 # download and install chefdk
 chef_dk_file="Downloads/chefdk_3.8.14-1_amd64.deb"
@@ -20,7 +20,7 @@ if [ ! -f "$chef_dk_file" ]; then
     wget -O $chef_dk_file https://packages.chef.io/files/stable/chefdk/3.8.14/debian/9/chefdk_3.8.14-1_amd64.deb
 fi
 
-dpkg -i $chef_dk_file
+su -c "dpkg -i $chef_dk_file"
 
 # download, unzip, and move release of linux-workstation repo
 curl -s https://api.github.com/repos/contently/linux-workstation/releases/latest \
@@ -32,6 +32,8 @@ mkdir -p Projects
 rm -rf Downloads/contently-linux-workstation-*
 tar -xf Downloads/linux-workstation-latest.tar.gz -C Downloads
 
+# TODO - add an "update" option that pulls down the current version rather than over-writing what's there?
+
 if [ -d "Projects/linux-workstation" ]; then
   rm -rf Projects/linux-workstation
 fi
@@ -40,12 +42,12 @@ mv Downloads/contently-linux-workstation-* Projects/linux-workstation
 
 # Create client and chef-up scripts from templates
 cp -f Projects/linux-workstation/chef/client.template.rb Projects/linux-workstation/chef/client.rb
+cp -f Projects/linux-workstation/chef/user.template.rb Projects/linux-workstation/chef/attributes/user.rb
 cp -f Projects/linux-workstation/bin/chef-up.template.sh Projects/linux-workstation/bin/chef-up.sh
 sed "s/{{USER}}/$CHEF_USER/g" -i Projects/linux-workstation/chef/client.rb
+sed "s/{{USER}}/$CHEF_USER/g" -i Projects/linux-workstation/chef/attributes/user.rb
 sed "s/{{USER}}/$CHEF_USER/g" -i Projects/linux-workstation/bin/chef-up.sh
 chmod +x Projects/linux-workstation/bin/chef-up.sh
-
-# TODO set 'user' in attrs to given username
 
 # run chef cookbook
 Projects/linux-workstation/bin/chef-up.sh
