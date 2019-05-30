@@ -72,3 +72,10 @@ Click on "Attach binaries by dropping them here or selecting them." and select t
 file included in your current branch/release.
 
 Click "Publish release" and you are done!
+
+## Troubleshooting
+
+* Can't boot from USB - Enter BIOS and disable "Secure boot" under "Security"
+* Boots from USB but install goes to black screen - Enter BIOS and under Startup enable CSM
+* WiFi isn't working - Check your kernel version. I had to upgrade to 4.19 to get firmware support
+
