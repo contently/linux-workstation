@@ -78,4 +78,4 @@ Click "Publish release" and you are done!
 * Can't boot from USB - Enter BIOS and disable "Secure boot" under "Security"
 * Boots from USB but install goes to black screen - Enter BIOS and under Startup enable CSM
 * WiFi isn't working - Check your kernel version. I had to upgrade to 4.19 to get firmware support
-
+* Ruby isn't installing - For v2.3.8 try `sudo apt-get install libssl1.0-dev`
