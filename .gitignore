@@ -11,3 +11,4 @@ chef/attributes/user.rb
 chef/local-mode-cache/
 chef/vendor/
 chef/Berksfile.lock
+.tool-versions

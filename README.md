@@ -72,3 +72,13 @@ Click on "Attach binaries by dropping them here or selecting them." and select t
 file included in your current branch/release.
 
 Click "Publish release" and you are done!
+
+## Troubleshooting
+
+* Can't boot from USB - Enter BIOS and disable "Secure boot" under "Security"
+* Boots from USB but install goes to black screen - Enter BIOS and under Startup enable CSM
+* WiFi isn't working - Check your kernel version. I had to upgrade to 4.19 to get firmware support
+* Ruby isn't installing - For v2.3.8 try `sudo apt-get install libssl1.0-dev`
+* VPN is working for network locations but nothing else - update settings under IPv4 and IPv6. Toggle on "Use this connection only for resources on this network"
+* `docker-compose up` from the platform fails to boot postgres - by default the installed version of postgress starts on boot. `sudo vim /etc/postgresql/9.6/main/start.conf` change `auto` to `manual` and `ps aux | postgres` to find the PID to kill or reboot.
+
