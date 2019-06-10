@@ -14,10 +14,10 @@ su -c "sed -i '/deb cdrom/d' /etc/apt/sources.list"
 su -c "apt-get update && apt-get install curl -y"
 
 # download and install chefdk
-chef_dk_file="Downloads/chefdk_3.8.14-1_amd64.deb"
+chef_dk_file="Downloads/chefdk_4.0.60-1_amd64.deb"
 
 if [ ! -f "$chef_dk_file" ]; then
-    wget -O $chef_dk_file https://packages.chef.io/files/stable/chefdk/3.8.14/debian/9/chefdk_3.8.14-1_amd64.deb
+    wget -O $chef_dk_file https://packages.chef.io/files/stable/chefdk/4.0.60/debian/9/chefdk_4.0.60-1_amd64.deb
 fi
 
 su -c "dpkg -i $chef_dk_file"
