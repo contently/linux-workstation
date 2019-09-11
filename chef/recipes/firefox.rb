@@ -14,7 +14,4 @@
 
 include_recipe 'linux-workstation::apt'
 
-package 'firefox-esr' do
-  default_release 'stretch-backports'
-  action :upgrade
-end
+package 'firefox-esr'

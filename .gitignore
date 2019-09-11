@@ -12,3 +12,4 @@ chef/local-mode-cache/
 chef/vendor/
 chef/Berksfile.lock
 .tool-versions
+.kitchen

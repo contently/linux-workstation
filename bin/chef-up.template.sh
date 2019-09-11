@@ -4,12 +4,12 @@
 #          Make sure to run setup-linux-workstation.sh initially.
 
 rm -rf /home/{{USER}}/.berkshelf/.cache
-rm /home/{{USER}}/Projects/linux-workstation/chef/Berksfile.lock
-rm -rf /home/{{USER}}/Projects/linux-workstation/tmp/chef/cookbooks
-berks vendor -b /home/{{USER}}/Projects/linux-workstation/chef/Berksfile /home/{{USER}}/Projects/linux-workstation/tmp/chef/cookbooks
+rm {{FULL_PROJECT_DIR}}/linux-workstation/chef/Berksfile.lock
+rm -rf {{FULL_PROJECT_DIR}}/linux-workstation/tmp/chef/cookbooks
+berks vendor -b {{FULL_PROJECT_DIR}}/linux-workstation/chef/Berksfile {{FULL_PROJECT_DIR}}/linux-workstation/tmp/chef/cookbooks
 
 if [ "$EUID" -ne 0 ]; then
-    sudo chef-client -c /home/{{USER}}/Projects/linux-workstation/chef/client.rb
+    sudo chef-client -c {{FULL_PROJECT_DIR}}/linux-workstation/chef/client.rb
 else
-    chef-client -c /home/{{USER}}/Projects/linux-workstation/chef/client.rb
+    chef-client -c {{FULL_PROJECT_DIR}}/linux-workstation/chef/client.rb
 fi

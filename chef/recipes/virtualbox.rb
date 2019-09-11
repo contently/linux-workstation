@@ -15,7 +15,14 @@
 include_recipe 'linux-workstation::apt'
 include_recipe 'linux-workstation::user'
 
-apt_package 'virtualbox' do
-  default_release "#{node[:lsb][:codename]}-backports"
-  action :upgrade
+execute 'wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -'
+execute 'wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -'
+
+apt_repository 'virtualbox' do
+  arch 'amd64'
+  uri 'http://download.virtualbox.org/virtualbox/debian'
+  distribution node[:lsb][:codename]
+  components %w(contrib)
 end
+
+apt_package 'virtualbox-6.0'
