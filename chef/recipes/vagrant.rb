@@ -16,6 +16,6 @@ include_recipe 'linux-workstation::apt'
 include_recipe 'linux-workstation::virtualbox'
 
 apt_package 'vagrant' do
-  default_release "#{node[:lsb][:codename]}-backports"
+  default_release "#{node[:lsb][:codename]}"
   action :upgrade
 end

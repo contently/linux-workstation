@@ -14,18 +14,34 @@
 
 include_recipe 'linux-workstation::apt'
 
-apt_package 'openjdk-8-jre-headless'
-
-dbeaver_url = 'https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb'
-dbeaver_path = "#{Chef::Config[:file_cache_path]}/dbeaver-ce_latest_amd64.deb"
-
-remote_file dbeaver_path do
-  source dbeaver_url
-  mode 0444
+%w(
+  ca-certificates-java
+  fontconfig-config
+  fonts-dejavu-core
+  java-common
+  libasound2
+  libasound2-data
+  libfontconfig1
+  libjpeg62-turbo
+  liblcms2-2
+  libnspr4
+  libnss3
+  libx11-6
+  libx11-data
+  libxau6
+  libxcb1
+  libxdmcp6
+  libxext6
+  libxi6
+  libxrender1
+  libxtst6
+  openjdk-11-jre-headless
+  x11-common
+  default-jre-headless
+).each do |pkg|
+  apt_package pkg
 end
 
-dpkg_package 'dbeaver' do
-  action :install
-  source dbeaver_path
-end
-
+execute 'wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb'
+execute 'dpkg -i dbeaver-ce_latest_amd64.deb'
+execute 'rm dbeaver-ce_latest_amd64.deb'

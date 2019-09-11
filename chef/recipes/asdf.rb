@@ -16,4 +16,3 @@ include_recipe 'linux-workstation::apt'
 include_recipe 'linux-workstation::user'
 
 asdf_user_install node['desktop']['user']['name']
-
