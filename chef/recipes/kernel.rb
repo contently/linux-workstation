@@ -14,4 +14,4 @@
 
 include_recipe 'linux-workstation::apt'
 
-apt_package 'linux-image-4.19.0-0.bpo.4-amd64'
+apt_package 'linux-image-4.19.0-6-amd64'

@@ -14,12 +14,38 @@
 
 include_recipe 'linux-workstation::apt'
 
-apt_repository 'chrome' do
-  components ['main']
-  distribution 'stable'
-  key 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
-  uri 'http://dl.google.com/linux/chrome/deb/'
-  notifies :run, 'execute[apt-get update]', :immediately
+%w(
+  fonts-liberation
+  libappindicator3-1
+  libasound2
+  libatk-bridge2.0-0
+  libatk1.0-0
+  libatspi2.0-0
+  libcairo2
+  libgdk-pixbuf2.0-0
+  libgtk-3-0
+  libnspr4
+  libnss3
+  libpango-1.0-0
+  libpangocairo-1.0-0
+  libx11-6
+  libx11-xcb1
+  libxcb1
+  libxcomposite1
+  libxcursor1
+  libxdamage1
+  libxext6
+  libxfixes3
+  libxi6
+  libxrandr2
+  libxrender1
+  libxss1
+  libxtst6
+  xdg-utils
+).each do |pkg|
+  apt_package pkg
 end
 
-apt_package 'google-chrome-stable'
+execute 'wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+execute 'dpkg -i google-chrome-stable_current_amd64.deb'
+execute 'rm google-chrome-stable_current_amd64.deb'

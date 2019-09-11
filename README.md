@@ -2,13 +2,10 @@
 
 ## Setup Instructions
 
-Ensure you are in your home directory:
-```bash
-$ cd ~
-```
-TODO: create DNS record that points to the below link? `dev.contently.com`?
+
 
 Download setup script:
+TODO: create DNS record that points to the below link? `dev.contently.com`?
 ```bash
 $ wget -O Downloads/setup-linux-workstation.sh https://github.com/contently/linux-workstation/releases/latest/download/setup-linux-workstation.sh
 ```
@@ -23,6 +20,13 @@ Execute script:
 $ ./Downloads/setup-linux-workstation.sh
 ```
 _note_: you will need to enter a "password" multiple times, this needs to be the root password for your machine.
+
+Run the chef script in the cloned linux-workstation directory (e.g. ~/Projects/linux-workstation)
+
+Make sure that you are the owner of all of the files in your home directory before running this.
+```bash
+$ ~/Projects/linux-workstation/bin/chef-up.sh
+``` 
 
 ## Development and Release
 
